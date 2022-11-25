@@ -1,0 +1,14 @@
+{% extends 'guitar_blog/base.html' %}
+
+    {% block content %}
+    <div class="creation_back">
+        <div class="musician_div">
+            <h1>Create Your Own Content Here!</h1>
+            <form method="post" class="musician_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="create_button">Create Blog</button>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}

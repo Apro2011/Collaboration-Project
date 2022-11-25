@@ -1,0 +1,121 @@
+{% extends 'guitar_blog/base.html' %} {% block content %} {% load static %}
+<div class="outer-div">
+  <div class="main-div">
+    <img src="{% static "front-end-images/Front-Page-Image.svg" %}"
+    alt="music-img" class="back-img">
+    <div class="detail-content-1">
+      <img
+        class="photo"
+        src="{{ musician.cover.url }}"
+        alt="{{ musician.name_of_musician }}"
+      />
+    </div>
+    <div class="detail-content-2">
+      <h1 class="detail_name">{{ musician.name_of_musician }}</h1>
+      <h2>{{ musician.name_of_band }}</h2>
+    </div>
+    <div class="detail-content-3">
+      <p><em>{{ musician.appreciation }}</em></p>
+      <p><em>{{ musician.published_date }}</em></p>
+    </div>
+
+    <div class="songs">
+      <div class="song1">
+        <p class="song1-name">{{ musician.music_1_name }}</p>
+        <audio controls>
+          <source src="{{ musician.music_1.url }}" type="audio/weba" />
+          <source src="{{ musician.music_1.url }}" type="audio/mpeg" />
+        </audio>
+
+        {% comment %} First Song Voting Button {% endcomment %}
+        <form method="post" class="voting-setup" id="top-song-form">
+          {% csrf_token %}
+          <input type="hidden" class="username" value="{{ user.get_username }}">
+          <input type="hidden" class="user_id" value="{{ user.id }}">
+          <input type="hidden" class="user" value="{{ user }}">
+          <input type="hidden" class="primary-key" value={{ musician.pk }}>
+          {% if user.get_username in musician.music_1_users %}
+          <button name="Unlike1" type="button" class="like-button top-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text top-button-inside-text">Unlike</span></i
+            >
+          </button>
+          {% else %}
+          <button name="Like1" type="button" class="like-button top-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text top-button-inside-text">Like</span></i
+            >
+          </button>
+          {% endif %}
+          <span class="after-like" id="top-song-vote-count">Liked {{ musician.music_1_votes }}</span>
+        </form>
+        
+      </div>
+
+      <div class="song2">
+        <p class="song2-name">{{ musician.music_2_name }}</p>
+        <audio controls>
+          <source src="{{ musician.music_2.url }}" type="audio/weba" />
+          <source src="{{ musician.music_2.url }}" type="audio/mpeg" />
+        </audio>
+
+        {% comment %} Second Song Voting Button {% endcomment %}
+        <form method="post" class="voting-setup" id="middle-song-form">
+          {% csrf_token %} 
+          <input type="hidden" class="username" value="{{ user.get_username }}">
+          <input type="hidden" class="user_id" value="{{ user.id }}">
+          <input type="hidden" class="user" value="{{ user }}">
+          <input type="hidden" class="primary-key" value={{ musician.pk }}>
+          {% if user.get_username in musician.music_2_users %}
+          <button name="Unlike2" type="submit" class="like-button middle-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text middle-button-inside-text">Unlike</span></i
+            >
+          </button>
+          {% else %}
+          <button name="Like2" type="button" class="like-button middle-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text middle-button-inside-text">Like</span></i
+            >
+          </button>
+          {% endif %}
+          <span class="after-like" id="middle-song-vote-count">Liked {{ musician.music_2_votes }}</span>
+        </form>
+      </div>
+
+      <div class="song3">
+        <p class="song3-name">{{ musician.music_3_name }}</p>
+        <audio controls>
+          <source src="{{ musician.music_3.url }}" type="audio/weba" />
+          <source src="{{ musician.music_3.url }}" type="audio/mpeg" />
+        </audio>
+
+        {% comment %} Third Song Voting Button {% endcomment %}
+        <form method="post" class="voting-setup" id="bottom-song-form">
+          {% csrf_token %}
+          <input type="hidden" class="username" value="{{ user.get_username }}">
+          <input type="hidden" class="user_id" value="{{ user.id }}">
+          <input type="hidden" class="user" value="{{ user }}">
+          <input type="hidden" class="primary-key" value={{ musician.pk }}>
+          {% if user.get_username in musician.music_3_users %}
+          <button name="Unlike3" type="button" class="like-button bottom-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text bottom-button-inside-text">Unlike</span></i
+            >
+          </button>
+          {% else %}
+          <button name="Like3" type="submit" class="like-button bottom-song-button">
+            <i class="fa-solid fa-guitar icon"
+              ><span class="like-text bottom-button-inside-text">Like</span></i
+            >
+          </button>
+          {% endif %}
+          <span class="after-like" id="bottom-song-vote-count">Liked {{ musician.music_3_votes }}</span>
+        </form>
+      </div>
+    </div>
+
+    <h3 class="writer">Written By: {{ musician.name_of_blog_maker }}</h3>
+  </div>
+</div>
+{% endblock content %}

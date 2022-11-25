@@ -1,0 +1,21 @@
+{% extends 'guitar_blog/base.html' %}
+
+{% block title %}
+    Sign Up Page
+{% endblock title %}
+
+{% block content %}
+<div class="welcome">
+    <div class="signup-form">
+        <h2 class="signup-heading">SignUp Page</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="signup-button">SignUp</button>
+            <br><br>
+            <a href="{% url "Musician" %}"></a>
+        </form>
+    </div>
+</div>
+    
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'guitar_blog/base.html' %}
+
+    {% block content %}
+    <div class="main_background">
+        {% for player in latest_musician %}
+        <a href="{% url "blog_detail" pk=player.pk %}">
+            <div class="musician-card">
+                <img class="blog-image" src="{{ player.cover.url }}" alt="{{ player.name_of_musician }}">
+                <h1 class="artist_name">{{ player.name_of_musician }}</h1>
+                <p class="artist_band">{{ player.name_of_band|linebreaksbr }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+        
+    {% endblock content %}
