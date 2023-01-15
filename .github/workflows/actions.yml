@@ -22,7 +22,7 @@ jobs:
         - name: Build the Docker image
           run: |
             cd backend
-            docker build . --file backend/Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/musicians-paradise
+            docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/musicians-paradise
 
       # Push docker image to Dockerhub
         - name: Docker Push
