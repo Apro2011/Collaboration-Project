@@ -20,7 +20,9 @@ jobs:
 
       # Build Docker Image
         - name: Build the Docker image
-          run: docker build https://github.com/Apro2011/Collaboration-Project/tree/develop/backend --file backend/Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/musicians-paradise
+          run: |
+            cd backend
+            docker build . --file backend/Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/musicians-paradise
 
       # Push docker image to Dockerhub
         - name: Docker Push
