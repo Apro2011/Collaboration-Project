@@ -1,2 +1,6 @@
 music_env
 .idea
+db.sqlite3
+guitar_blog/__pycache__
+mysite/__pycache__
+media
