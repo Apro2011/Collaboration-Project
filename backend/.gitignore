@@ -2,5 +2,8 @@ music_env
 .idea
 db.sqlite3
 guitar_blog/__pycache__
+guitar_blog/migrations
 mysite/__pycache__
 media
+users/__pycache__
+users/migrations
