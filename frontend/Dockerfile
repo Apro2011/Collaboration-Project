@@ -15,7 +15,7 @@ WORKDIR /app
 COPY package*.json /app
 
 # Install dependencies in /app
-RUN yarn install
+RUN npm install
 
 # Copy the rest of our Next.js folder into /app
 COPY . /app
@@ -23,5 +23,5 @@ COPY . /app
 # Ensure port 3000 is accessible to our system
 EXPOSE 3000
 
-# Run yarn dev, as we would via the command line 
-CMD ["yarn", "dev"]
+# Run npm dev, as we would via the command line 
+CMD ["npm", "dev"]
