@@ -15,3 +15,14 @@ services:
       - /app/.next
     ports:
       - 3000:3000
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend:/musicians-project
+    ports:
+      - "8000:8000"
