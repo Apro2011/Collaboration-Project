@@ -4,7 +4,7 @@ import withAuth from '../hocs/withAuth';
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar/Navbar.jsx'
 
-export default function Home() {
+function Home() {
 	return (
 		<div className={styles.container}>
 			<Navbar/>
