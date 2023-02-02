@@ -1,11 +1,13 @@
 import React from 'react';
-import styles from "./Navbar.scss"
 
-const Navbar = () => {
+import './Navbar.module.css';
+
+function Navbar() {
     return (
         <div className="navbar">
+            hi
         </div>
     );
-};
+}
 
 export default Navbar;
