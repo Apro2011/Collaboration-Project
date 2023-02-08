@@ -1,7 +1,5 @@
-# Dockerfile
-
 # Use python 3.11
-FROM python:3.11
+FROM python:alpine
 
 # Set Environment Variable
 ENV PYTHONUNBUFFERED=1
@@ -13,18 +11,18 @@ RUN mkdir /musicians-project
 WORKDIR /musicians-project
 
 # Add project to working directory
-ADD . /musicians-project/
+COPY ./mysite ./mysite
+COPY ./users ./users
+COPY ./guitar_blog ./guitar_blog
+COPY ./migrate.sh .
+COPY ./manage.py .
+COPY ./requirements.txt .
 
 # Install python packages
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Create the Database
-RUN python manage.py makemigrations
-RUN python manage.py migrate
 
 # Expose the Port
 EXPOSE 8000
 
 # Start the Server
-ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["/bin/sh", "./migrate.sh"]
