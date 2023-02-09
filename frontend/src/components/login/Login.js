@@ -5,6 +5,7 @@ import { LOGIN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
 import { validationLogin } from "../../helpers/validation";
 import { Formik, Form, Field } from "formik";
+import { useRouter } from 'next/router';
 
 const initialFormState = {
   username: "",
@@ -12,18 +13,16 @@ const initialFormState = {
 };
 
 const Login = () => {
+  const router = useRouter();
   const [mutateLogin, { data, loading, error }] =
     useMutation(LOGIN_USER_MUTATION);
 
   const submitHandler = async (values, actions) => {
-    console.log(values);
     try {
-      const result = await mutateLogin({ variables: {
- 
-        "username": "username",
-        "password": "password"
-      } });
-      console.log('result',result);
+      const result = await mutateLogin({ variables: values });
+      console.log('result',result.data.tokenAuth);
+      localStorage.setItem("token",result.data.tokenAuth.token)
+      router.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -83,3 +82,15 @@ const Login = () => {
 };
 
 export default Login;
+
+Login.getInitialProps = async () => {
+  // Check if the user is authenticated
+  const isAuthenticated = checkIfUserIsAuthenticated();
+
+  if (isAuthenticated) {
+    // If the user is authenticated, redirect to the home page
+    Router.push('/');
+  }
+
+  return {};
+};
