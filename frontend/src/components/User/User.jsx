@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './User.module.css';
 
+import UserMenu from '../UserMenu/UserMenu';
+
 var profilePic = '';
 var userName = 'Username';
 
@@ -10,7 +12,7 @@ function User() {
         <div className={styles['user']}>
             <div className={styles['user__profile-pic']}><img className={styles['user__img']} src={profilePic}></img></div>
             <div className={styles['user__username']}>{userName}</div>
-            <div className={styles['user__dropdown-button']}>x</div>{/* Need to add styling/functionality for drop down menu, waiting on design */}
+            <UserMenu/>
         </div>
     );
 }

@@ -1,0 +1,37 @@
+.user-menu {}
+
+.user-menu__button {
+    position: relative;
+    border: solid 2px #000000;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-menu__button:hover .user-menu__list {
+    display: block;
+}
+
+.user-menu__list {
+    display: none;
+    position: absolute;
+    list-style: none;
+    border: solid 2px #000000;
+    padding: 10px;
+    width: 125px;
+    height: fit-content;
+    bottom: -108px;
+    left: -2px;
+    background-color: #ffffff;
+}
+
+.user-menu__list:hover {
+    display: block;
+}
+
+.user-menu__item:hover {
+    background-color: #aaaaaa;
+}
+
+.user-menu__link {}
