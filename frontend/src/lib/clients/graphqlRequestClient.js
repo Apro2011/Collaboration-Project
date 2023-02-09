@@ -11,7 +11,7 @@ const client = new ApolloClient({
   link: from([
     new ApolloLink((operation, forward) => {
       operation.setContext(({ headers = {} }) => ({
-        uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+        uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
 
         headers: {
           ...headers,
@@ -22,7 +22,7 @@ const client = new ApolloClient({
       }));
       return forward(operation);
     }),
-    new HttpLink({ uri: process.env.REACT_APP_GRAPHQL_ENDPOINT }),
+    new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT }),
   ]),
 });
 
