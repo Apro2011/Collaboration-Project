@@ -3,8 +3,6 @@ import useAuth from "../hooks/useAuth";
 const withAuth = WrappedComponent => {
     return function WithAuth(props) {
       const user = useAuth();
-
-      console.log('user',user);
     
       if (!user) {
         return null;

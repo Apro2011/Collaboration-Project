@@ -21,7 +21,6 @@ function useAuth() {
             const username = result.data.verifyToken.payload.username;
             setUser({username})
           } catch (error) {
-            setUser(null);
             return;
           }
       };

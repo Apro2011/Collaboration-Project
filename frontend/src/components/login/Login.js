@@ -31,8 +31,6 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.login_title}>Sign In</p>
-      <p className={styles.login_subtitle}>Log in to enjoy unlimited music</p>
       <Formik
         initialValues={initialFormState}
         validationSchema={validationLogin}
@@ -40,6 +38,8 @@ const Login = () => {
       >
         {({ isSubmitting ,errors,touched }) => (
           <Form  className={styles.login_box}>
+            <p className={styles.login_title}>Sign In</p>
+            <p className={styles.login_subtitle}>Log in to enjoy unlimited music</p>
             <Field className={styles.input} placeholder="Username" name="username" />
             <p className={(errors.username && touched.username) ? styles.error_show : styles.error_hide }>{errors.username}</p>
             <Field
@@ -87,7 +87,7 @@ Login.getInitialProps = async () => {
   // Check if the user is authenticated
   const isAuthenticated = checkIfUserIsAuthenticated();
 
-  if (isAuthenticated) {
+  if (true) {
     // If the user is authenticated, redirect to the home page
     Router.push('/');
   }
