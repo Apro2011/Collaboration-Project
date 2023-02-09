@@ -6,10 +6,13 @@
     width: 32px;
     height: 32px;
     text-align: center;
-    cursor: pointer;
 }
 
 .user-menu__button:hover .user-menu__list {
+    display: block;
+}
+
+.user-menu__button:focus .user-menu__list {
     display: block;
 }
 
@@ -30,8 +33,18 @@
     display: block;
 }
 
+.user-menu__list:focus {
+    display: block;
+}
+
 .user-menu__item:hover {
     background-color: #aaaaaa;
 }
 
-.user-menu__link {}
+.user-menu__item:focus {
+    background-color: #aaaaaa;
+}
+
+.user-menu__item > a {
+    display: block;
+}
