@@ -1,0 +1,19 @@
+.navlist {
+    padding-left: 8px;
+    padding-right: 8px;
+    list-style: none;
+}
+
+.navlist__item {
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.navlist__link {
+    display: block;
+    border: solid 2px #000000;
+    width: 125px;
+    height: 32px;
+    text-align: center;
+}
