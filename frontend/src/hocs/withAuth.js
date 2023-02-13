@@ -6,6 +6,7 @@ const withAuth = WrappedComponent => {
     return function WithAuth(props) {
       const router = useRouter();
       const {user,isLoading,isAuthenticated} = useAuth();
+      console.log(isLoading,isAuthenticated);
 
       useEffect(()=>{
 
@@ -14,6 +15,8 @@ const withAuth = WrappedComponent => {
         }
         if(isAuthenticated){
           router.push('/')
+        }else{
+          router.push('/sign-in ')
         }
         
       },[isLoading , isAuthenticated])

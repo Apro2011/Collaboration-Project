@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Signup.module.css";
 import Link from "next/link";
-import { SIGNUP_USER_MUTATION,SIGNIN_USER_MUTATION } from "../../graphql/auth/user";
+import { SIGN_UP_USER_MUTATION,SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
 import { validationSignup } from "../../helpers/validation";
 import { Formik, Form, Field } from "formik";
@@ -17,8 +17,8 @@ const initialFormState = {
 const Signup = () => {
   const router = useRouter();
   const { isAuthenticated, isLoading } = useAuth();
-  const [mutateSignup] = useMutation(SIGNUP_USER_MUTATION);
-  const [mutateSignIn] = useMutation(SIGNIN_USER_MUTATION);
+  const [mutateSignup] = useMutation(SIGN_UP_USER_MUTATION);
+  const [mutateSignIn] = useMutation(SIGN_IN_USER_MUTATION);
 
   const submitHandler = async (values, actions) => {
     try {
