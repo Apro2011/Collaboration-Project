@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import styles from "./login.module.css";
+import styles from "./Signin.module.css";
 import Link from "next/link";
-import { LOGIN_USER_MUTATION } from "../../graphql/auth/user";
+import { SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
-import { validationLogin } from "../../helpers/validation";
+import { validationSignIn } from "../../helpers/validation";
 import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
@@ -13,14 +13,14 @@ const initialFormState = {
   password: "",
 };
 
-const Login = () => {
+const SignIn = () => {
   const router = useRouter();
   const { isAuthenticated, isLoading } = useAuth();
-  const [mutateLogin] = useMutation(LOGIN_USER_MUTATION);
+  const [mutateSignIn] = useMutation(SIGN_IN_USER_MUTATION);
 
   const submitHandler = async (values, actions) => {
     try {
-      const result = await mutateLogin({ variables: values });
+      const result = await mutateSignIn({ variables: values });
       localStorage.setItem("token", result.data.tokenAuth.token);
       router.push("/");
     } catch (error) {
@@ -33,20 +33,20 @@ const Login = () => {
     if (!isLoading && isAuthenticated) {
       router.push("/");
     }
-  }, [!isLoading && isAuthenticated]);
+  }, [isLoading , isAuthenticated]);
 
   if (!isLoading && !isAuthenticated) {
     return (
       <div className={styles.container}>
         <Formik
           initialValues={initialFormState}
-          validationSchema={validationLogin}
+          validationSchema={validationSignIn}
           onSubmit={submitHandler}
         >
           {({ isSubmitting, errors, touched }) => (
-            <Form className={styles.login_box}>
-              <p className={styles.login_title}>Sign In</p>
-              <p className={styles.login_subtitle}>
+            <Form className={styles.sign_in_box}>
+              <p className={styles.sign_in_title}>Sign In</p>
+              <p className={styles.sign_in_subtitle}>
                 Log in to enjoy unlimited music
               </p>
               <Field
@@ -79,12 +79,12 @@ const Login = () => {
               </p>
               <div className={styles.remember_me_box}>
                 <input
-                  id="login_remember_me"
+                  id="sign_in_remember_me"
                   type="checkbox"
                   className={styles.remember_me_checkbox}
                 />
                 <label
-                  htmlFor="login_remember_me"
+                  htmlFor="sign_in_remember_me"
                   className={styles.remember_me_label}
                 >
                   Remember Me
@@ -95,12 +95,12 @@ const Login = () => {
                 disabled={isSubmitting}
                 className={styles.submit_button}
               >
-                Login
+                Sign In
               </button>
             </Form>
           )}
         </Formik>
-        <Link href="/signup" className={styles.signup}>
+        <Link href="/sign-up" className={styles.signup}>
           Don’t have an account? Sign Up
         </Link>
         <Link href="/forget-password" className={styles.forget_password}>
@@ -111,4 +111,4 @@ const Login = () => {
   }
 };
 
-export default Login;
+export default SignIn;

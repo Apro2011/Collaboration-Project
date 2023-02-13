@@ -12,12 +12,10 @@ const withAuth = WrappedComponent => {
         if(isLoading){
             return
         }
-
         if(isAuthenticated){
           router.push('/')
-        }else{
-          router.push('/login')
         }
+        
       },[isLoading , isAuthenticated])
 
       if (isLoading) {
