@@ -3,6 +3,7 @@
 version: "3"
 
 services:
+
   frontend:
     build:
       context: ./frontend
@@ -25,4 +26,17 @@ services:
     volumes:
       - ./backend:/musicians-project
     ports:
-      - "8000:8000"
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: mongo:latest
+    container_name: mongo_db
+    volumes:
+      - ./data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=guitar_db
+    ports:
+      - 27017:27017
+    restart: always
