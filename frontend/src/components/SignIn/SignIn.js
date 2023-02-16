@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "./Signin.module.css";
+import styles from "./SignIn.module.css";
 import Link from "next/link";
 import { SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
