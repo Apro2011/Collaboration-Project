@@ -8,6 +8,8 @@ import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
 
+import Button from  '../atoms/Button';
+
 const initialFormState = {
   username: "",
   email: "",
@@ -94,13 +96,14 @@ const Signup = () => {
               >
                 {errors.password}
               </p>
-              <button
+              <Button />
+              {/* <button
                 type="submit"
                 disabled={isSubmitting}
                 className={styles.submit_button}
               >
                 Signup
-              </button>
+              </button> */}
             </Form>
           )}
         </Formik>
