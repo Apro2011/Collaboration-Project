@@ -3,6 +3,18 @@
 version: "3"
 
 services:
+  design-system:
+    build:
+      context: ./design-system
+      dockerfile: Dockerfile
+    container_name: design-system
+    restart: always
+    volumes:
+      - ./design-system:/app
+      - ./design-system/node_modules:/app/node_modules
+    ports:
+      - 6006:6006
+
   frontend:
     build:
       context: ./frontend
