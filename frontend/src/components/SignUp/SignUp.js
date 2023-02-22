@@ -4,10 +4,10 @@ import Link from "next/link";
 import { SIGN_UP_USER_MUTATION,SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
 import { validationSignup } from "../../helpers/validation";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
-import Button from  '../atoms/Button';
+import { Button, Input } from "../atoms";
 
 const initialFormState = {
   username: "",
@@ -53,48 +53,9 @@ const Signup = () => {
               <p className={styles.login_subtitle}>
                 Sign up to enjoy unlimited music
               </p>
-              <Field
-                className={styles.input}
-                placeholder="Username"
-                name="username"
-              />
-              <p
-                className={
-                  errors.username && touched.username
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.username}
-              </p>
-              <Field
-                className={styles.input}
-                placeholder="Email"
-                name="email"
-              />
-              <p
-                className={
-                  errors.email && touched.email
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.email}
-              </p>
-              <Field
-                className={styles.input}
-                placeholder="Password"
-                name="password"
-              />
-              <p
-                className={
-                  errors.password && touched.password
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.password}
-              </p>
+              <Input placeholder="Username" name="username" error={errors.username} touched={touched.username} type="text"/>
+              <Input placeholder="Email" name="email" error={errors.email} touched={touched.email} type="text"/>
+              <Input placeholder="Password" name="password" error={errors.password} touched={touched.password} type="password"/>
               <Button isSubmitting={isSubmitting} type="submit" title="Sign up"/>
             </Form>
           )}
