@@ -7,6 +7,7 @@ import { validationSignIn } from "../../helpers/validation";
 import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
+import Button from  '../atoms/Button';
 
 const initialFormState = {
   username: "",
@@ -90,13 +91,7 @@ const SignIn = () => {
                   Remember Me
                 </label>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.submit_button}
-              >
-                Sign In
-              </button>
+              <Button isSubmitting={isSubmitting} type="submit" title="Sign In"/>
             </Form>
           )}
         </Formik>

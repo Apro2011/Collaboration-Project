@@ -7,7 +7,6 @@ import { validationSignup } from "../../helpers/validation";
 import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
-
 import Button from  '../atoms/Button';
 
 const initialFormState = {
@@ -50,7 +49,7 @@ const Signup = () => {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className={styles.login_box}>
-              <p className={styles.login_title}>Sign In</p>
+              <p className={styles.login_title}>Sign Up</p>
               <p className={styles.login_subtitle}>
                 Sign up to enjoy unlimited music
               </p>
@@ -96,14 +95,7 @@ const Signup = () => {
               >
                 {errors.password}
               </p>
-              <Button />
-              {/* <button
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.submit_button}
-              >
-                Signup
-              </button> */}
+              <Button isSubmitting={isSubmitting} type="submit" title="Sign up"/>
             </Form>
           )}
         </Formik>
