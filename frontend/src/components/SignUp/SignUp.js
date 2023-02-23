@@ -1,18 +1,21 @@
-import React, { useEffect } from "react";
-import styles from "./SignUp.module.css";
-import Link from "next/link";
-import { SIGN_UP_USER_MUTATION,SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
-import { useMutation } from "@apollo/client";
-import { validationSignup } from "../../helpers/validation";
-import { Formik, Form } from "formik";
-import { useRouter } from "next/router";
-import useAuth from "../../hooks/useAuth";
-import { Button, Input } from "../atoms";
+import React, { useEffect } from 'react';
+import styles from './SignUp.module.css';
+import Link from 'next/link';
+import {
+  SIGN_UP_USER_MUTATION,
+  SIGN_IN_USER_MUTATION
+} from '../../graphql/auth/user';
+import { useMutation } from '@apollo/client';
+import { validationSignup } from '../../helpers/validation';
+import { Formik, Form } from 'formik';
+import { useRouter } from 'next/router';
+import useAuth from '../../hooks/useAuth';
+import { Button, Input } from '../atoms';
 
 const initialFormState = {
-  username: "",
-  email: "",
-  password: "",
+  username: '',
+  email: '',
+  password: ''
 };
 
 const Signup = () => {
@@ -25,8 +28,8 @@ const Signup = () => {
     try {
       await mutateSignup({ variables: values });
       const result = await mutateSignIn({ variables: values });
-      localStorage.setItem("token", result.data.tokenAuth.token);
-      router.push("/");
+      localStorage.setItem('token', result.data.tokenAuth.token);
+      router.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -35,9 +38,9 @@ const Signup = () => {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      router.push("/");
+      router.push('/');
     }
-  }, [isLoading , isAuthenticated]);
+  }, [isLoading, isAuthenticated]);
 
   if (!isLoading && !isAuthenticated) {
     return (
@@ -53,10 +56,32 @@ const Signup = () => {
               <p className={styles.login_subtitle}>
                 Sign up to enjoy unlimited music
               </p>
-              <Input placeholder="Username" name="username" error={errors.username} touched={touched.username} type="text"/>
-              <Input placeholder="Email" name="email" error={errors.email} touched={touched.email} type="text"/>
-              <Input placeholder="Password" name="password" error={errors.password} touched={touched.password} type="password"/>
-              <Button isSubmitting={isSubmitting} type="submit" title="Sign up"/>
+              <Input
+                placeholder="Username"
+                name="username"
+                error={errors.username}
+                touched={touched.username}
+                type="text"
+              />
+              <Input
+                placeholder="Email"
+                name="email"
+                error={errors.email}
+                touched={touched.email}
+                type="text"
+              />
+              <Input
+                placeholder="Password"
+                name="password"
+                error={errors.password}
+                touched={touched.password}
+                type="password"
+              />
+              <Button
+                isSubmitting={isSubmitting}
+                type="submit"
+                title="Sign up"
+              />
             </Form>
           )}
         </Formik>
