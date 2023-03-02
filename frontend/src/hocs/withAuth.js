@@ -1,36 +1,34 @@
-import { useEffect } from "react";
-import useAuth from "../hooks/useAuth";
+import { useEffect } from 'react';
+import useAuth from '../hooks/useAuth';
 import { useRouter } from 'next/router';
 
-const withAuth = WrappedComponent => {
-    return function WithAuth(props) {
-      const router = useRouter();
-      const {user,isLoading,isAuthenticated} = useAuth();
-      console.log(isLoading,isAuthenticated);
+const withAuth = (WrappedComponent) => {
+  return function WithAuth(props) {
+    const router = useRouter();
+    const { user, isLoading, isAuthenticated } = useAuth();
+    console.log(isLoading, isAuthenticated);
 
-      useEffect(()=>{
-
-        if(isLoading){
-            return
-        }
-        if(isAuthenticated){
-          router.push('/')
-        }else{
-          router.push('/sign-in ')
-        }
-        
-      },[isLoading , isAuthenticated])
-
+    useEffect(() => {
       if (isLoading) {
-        return null
+        return;
       }
-    
-      if (!user) {
-        return null;
+      if (isAuthenticated) {
+        router.push('/');
+      } else {
+        router.push('/sign-in ');
       }
-  
-      return <WrappedComponent {...props} />;
-    };
+    }, [isLoading, isAuthenticated]);
+
+    if (isLoading) {
+      return null;
+    }
+
+    if (!user) {
+      return null;
+    }
+
+    return <WrappedComponent {...props} />;
   };
-  
-  export default withAuth;
+};
+
+export default withAuth;
