@@ -10,8 +10,6 @@ function NavBar() {
     
     const {isLoggedIn} = auth.isLoggedIn();
 
-    console.log('loggedzzz',isLoggedIn);
-
     return (
         <nav className={styles['navbar']}>
             <div className={styles['navbar__nav-list']}>
