@@ -87,6 +87,8 @@ Login.getInitialProps = async () => {
   // Check if the user is authenticated
   const isAuthenticated = checkIfUserIsAuthenticated();
 
+  console.log('isAuthenticated',isAuthenticated);
+
   if (true) {
     // If the user is authenticated, redirect to the home page
     Router.push('/');
