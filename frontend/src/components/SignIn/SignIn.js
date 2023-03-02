@@ -4,9 +4,10 @@ import Link from "next/link";
 import { SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
 import { validationSignIn } from "../../helpers/validation";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
+import { Button, Input } from "../atoms";
 
 const initialFormState = {
   username: "",
@@ -49,34 +50,8 @@ const SignIn = () => {
               <p className={styles.sign_in_subtitle}>
                 Log in to enjoy unlimited music
               </p>
-              <Field
-                className={styles.input}
-                placeholder="Username"
-                name="username"
-              />
-              <p
-                className={
-                  errors.username && touched.username
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.username}
-              </p>
-              <Field
-                className={styles.input}
-                placeholder="Password"
-                name="password"
-              />
-              <p
-                className={
-                  errors.password && touched.password
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.password}
-              </p>
+              <Input placeholder="Username" name="username" error={errors.username} touched={touched.username} type="text"/>
+              <Input placeholder="Password" name="password" error={errors.password} touched={touched.password} type="password"/>
               <div className={styles.remember_me_box}>
                 <input
                   id="sign_in_remember_me"
@@ -90,13 +65,7 @@ const SignIn = () => {
                   Remember Me
                 </label>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={styles.submit_button}
-              >
-                Sign In
-              </button>
+              <Button isSubmitting={isSubmitting} type="submit" title="Sign In"/>
             </Form>
           )}
         </Formik>

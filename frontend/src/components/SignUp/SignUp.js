@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
-import styles from "./SignUp.module.css";
-import Link from "next/link";
-import { SIGN_UP_USER_MUTATION,SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
-import { useMutation } from "@apollo/client";
-import { validationSignup } from "../../helpers/validation";
-import { Formik, Form, Field } from "formik";
-import { useRouter } from "next/router";
-import useAuth from "../../hooks/useAuth";
+import React, { useEffect } from 'react';
+import styles from './SignUp.module.css';
+import Link from 'next/link';
+import {
+  SIGN_UP_USER_MUTATION,
+  SIGN_IN_USER_MUTATION
+} from '../../graphql/auth/user';
+import { useMutation } from '@apollo/client';
+import { validationSignup } from '../../helpers/validation';
+import { Formik, Form } from 'formik';
+import { useRouter } from 'next/router';
+import useAuth from '../../hooks/useAuth';
+import { Button, Input } from '../atoms';
 
 const initialFormState = {
-  username: "",
-  email: "",
-  password: "",
+  username: '',
+  email: '',
+  password: ''
 };
 
 const Signup = () => {
@@ -24,8 +28,8 @@ const Signup = () => {
     try {
       await mutateSignup({ variables: values });
       const result = await mutateSignIn({ variables: values });
-      localStorage.setItem("token", result.data.tokenAuth.token);
-      router.push("/");
+      localStorage.setItem('token', result.data.tokenAuth.token);
+      router.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -34,9 +38,9 @@ const Signup = () => {
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      router.push("/");
+      router.push('/');
     }
-  }, [isLoading , isAuthenticated]);
+  }, [isLoading, isAuthenticated]);
 
   if (!isLoading && !isAuthenticated) {
     return (
@@ -48,59 +52,36 @@ const Signup = () => {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className={styles.login_box}>
-              <p className={styles.login_title}>Sign In</p>
+              <p className={styles.login_title}>Sign Up</p>
               <p className={styles.login_subtitle}>
                 Sign up to enjoy unlimited music
               </p>
-              <Field
-                className={styles.input}
+              <Input
                 placeholder="Username"
                 name="username"
+                error={errors.username}
+                touched={touched.username}
+                type="text"
               />
-              <p
-                className={
-                  errors.username && touched.username
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.username}
-              </p>
-              <Field
-                className={styles.input}
+              <Input
                 placeholder="Email"
                 name="email"
+                error={errors.email}
+                touched={touched.email}
+                type="text"
               />
-              <p
-                className={
-                  errors.email && touched.email
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.email}
-              </p>
-              <Field
-                className={styles.input}
+              <Input
                 placeholder="Password"
                 name="password"
+                error={errors.password}
+                touched={touched.password}
+                type="password"
               />
-              <p
-                className={
-                  errors.password && touched.password
-                    ? styles.error_show
-                    : styles.error_hide
-                }
-              >
-                {errors.password}
-              </p>
-              <button
+              <Button
+                isSubmitting={isSubmitting}
                 type="submit"
-                disabled={isSubmitting}
-                className={styles.submit_button}
-              >
-                Signup
-              </button>
+                title="Sign up"
+              />
             </Form>
           )}
         </Formik>
