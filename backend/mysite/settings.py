@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'guitar_db',
         'CLIENT': {
-                'host': 'db',
+                'host': 'localhost',
                 'port': 27017
             } 
     }
