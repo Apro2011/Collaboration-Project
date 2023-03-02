@@ -5,7 +5,7 @@ class Musician(models.Model):
     cover = models.ImageField(upload_to="media/", default=None)
     your_name = models.CharField(max_length=200, null=True, blank=True)
     stage_name = models.CharField(max_length=200)
-    bands_played = models.CharField(max_length=200, default="Solo Performer")
+    bands_played = models.JSONField(default=list, null=True)
     published_date = models.DateTimeField("Published At", blank=True, null=True)
     
     def __str__(self):
