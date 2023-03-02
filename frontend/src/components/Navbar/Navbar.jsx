@@ -4,18 +4,22 @@ import styles from './Navbar.module.css';
 
 import User from '../User/User';
 import NavList from '../NavList/NavList';
-
-const userLoggedIn = true;
+import auth from '../../hooks/auth'
 
 function NavBar() {
+    
+    const {isLoggedIn} = auth.isLoggedIn();
+
+    console.log('loggedzzz',isLoggedIn);
+
     return (
         <nav className={styles['navbar']}>
             <div className={styles['navbar__nav-list']}>
                 <NavList
-                    loggedIn = {userLoggedIn}
+                    loggedIn = {isLoggedIn}
                 />
             </div>
-            {userLoggedIn === true && <div className={styles['navbar__user']}><User/></div>}
+            {isLoggedIn === true && <div className={styles['navbar__user']}><User/></div>}
         </nav>
     );
 }
