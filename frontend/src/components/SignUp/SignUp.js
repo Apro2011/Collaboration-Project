@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import styles from "./SignUp.module.css";
 import Link from "next/link";
-import { SIGN_UP_USER_MUTATION,SIGN_IN_USER_MUTATION } from "../../graphql/auth/user";
+import {
+  SIGN_UP_USER_MUTATION,
+  SIGN_IN_USER_MUTATION,
+} from "../../graphql/auth/user";
 import { useMutation } from "@apollo/client";
 import { validationSignup } from "../../helpers/validation";
 import { Formik, Form } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
-import { Button, Input } from "../atoms";
+import { Button, Input, Error, Label } from "../atoms";
+import FormField from "../organisms/FormField";
 
 const initialFormState = {
   username: "",
@@ -37,7 +41,7 @@ const Signup = () => {
     if (!isLoading && isAuthenticated) {
       router.push("/");
     }
-  }, [isLoading , isAuthenticated]);
+  }, [isLoading, isAuthenticated]);
 
   if (!isLoading && !isAuthenticated) {
     return (
@@ -47,16 +51,51 @@ const Signup = () => {
           validationSchema={validationSignup}
           onSubmit={submitHandler}
         >
-          {({ isSubmitting, errors, touched }) => (
+          {({ isSubmitting, touched }) => (
             <Form className={styles.login_box}>
               <p className={styles.login_title}>Sign Up</p>
               <p className={styles.login_subtitle}>
                 Sign up to enjoy unlimited music
               </p>
-              <Input placeholder="Username" name="username" error={errors.username} touched={touched.username} type="text"/>
-              <Input placeholder="Email" name="email" error={errors.email} touched={touched.email} type="text"/>
-              <Input placeholder="Password" name="password" error={errors.password} touched={touched.password} type="password"/>
-              <Button isSubmitting={isSubmitting} type="submit" title="Sign up"/>
+
+              <FormField>
+                <Label label="Username" />
+                <Input
+                  placeholder="Username"
+                  name="username"
+                  touched={touched.username}
+                  type="text"
+                />
+                <Error name="username" />
+              </FormField>
+
+              <FormField>
+                <Label label="Email" />
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  touched={touched.email}
+                  type="text"
+                />
+                <Error name="email" />
+              </FormField>
+
+              <FormField>
+                <Label label="Password" />
+                <Input
+                  placeholder="Password"
+                  name="password"
+                  touched={touched.password}
+                  type="text"
+                />
+                <Error name="password" />
+              </FormField>
+
+              <Button
+                isSubmitting={isSubmitting}
+                type="submit"
+                title="Sign up"
+              />
             </Form>
           )}
         </Formik>

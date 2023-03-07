@@ -7,7 +7,8 @@ import { validationSignIn } from "../../helpers/validation";
 import { Formik, Form } from "formik";
 import { useRouter } from "next/router";
 import useAuth from "../../hooks/useAuth";
-import { Button, Input } from "../atoms";
+import FormField from "../organisms/FormField";
+import { Button, Input, Error, Label } from "../atoms";
 
 const initialFormState = {
   username: "",
@@ -34,7 +35,7 @@ const SignIn = () => {
     if (!isLoading && isAuthenticated) {
       router.push("/");
     }
-  }, [isLoading , isAuthenticated]);
+  }, [isLoading, isAuthenticated]);
 
   if (!isLoading && !isAuthenticated) {
     return (
@@ -44,14 +45,35 @@ const SignIn = () => {
           validationSchema={validationSignIn}
           onSubmit={submitHandler}
         >
-          {({ isSubmitting, errors, touched }) => (
+          {({ isSubmitting, touched }) => (
             <Form className={styles.sign_in_box}>
               <p className={styles.sign_in_title}>Sign In</p>
               <p className={styles.sign_in_subtitle}>
                 Log in to enjoy unlimited music
               </p>
-              <Input placeholder="Username" name="username" error={errors.username} touched={touched.username} type="text"/>
-              <Input placeholder="Password" name="password" error={errors.password} touched={touched.password} type="password"/>
+
+              <FormField>
+                <Label label="Username" />
+                <Input
+                  placeholder="Username"
+                  name="username"
+                  touched={touched.username}
+                  type="text"
+                />
+                <Error name="username" />
+              </FormField>
+
+              <FormField>
+                <Label label="Password" />
+                <Input
+                  placeholder="Password"
+                  name="password"
+                  touched={touched.password}
+                  type="text"
+                />
+                <Error name="password" />
+              </FormField>
+
               <div className={styles.remember_me_box}>
                 <input
                   id="sign_in_remember_me"
@@ -65,7 +87,11 @@ const SignIn = () => {
                   Remember Me
                 </label>
               </div>
-              <Button isSubmitting={isSubmitting} type="submit" title="Sign In"/>
+              <Button
+                isSubmitting={isSubmitting}
+                type="submit"
+                title="Sign In"
+              />
             </Form>
           )}
         </Formik>
