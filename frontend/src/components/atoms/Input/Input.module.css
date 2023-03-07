@@ -7,16 +7,3 @@
     border-radius: 10px;
     margin-bottom: 8px;
 }
-
-.error_hide{
-    opacity: 0;
-    height: 24px;
-    margin-bottom: 12px;
-}
-
-.error_show{
-    opacity: 1;
-    color: red;
-    height: 24px;
-    margin-bottom: 12px;
-}
