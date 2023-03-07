@@ -7,3 +7,5 @@ mysite/__pycache__
 media
 users/__pycache__
 users/migrations
+graphene_file_upload/__pycache__
+graphene_file_upload/django/__pycache__
