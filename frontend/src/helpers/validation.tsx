@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const validationRegister = Yup.object().shape({
+export const validationSignup = Yup.object().shape({
   username: Yup.string()
     .min(2, "Username must be at least 2 characters")
     .required("Username is required"),
@@ -10,7 +10,7 @@ export const validationRegister = Yup.object().shape({
   email: Yup.string().email("Email is invalid").required("Email is required"),
 });
 
-export const validationLogin = Yup.object().shape({
+export const validationSignIn = Yup.object().shape({
   username: Yup.string()
     .min(2, "Username must be at least 2 characters")
     .required("Username is required"),
