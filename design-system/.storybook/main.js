@@ -8,5 +8,12 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions"
   ],
-  "framework": "@storybook/react"
+  "framework": "@storybook/react",
+  webpackFinal: async (config) => {
+    config.watchOptions = {
+      aggregateTimeout: 200,
+      poll: 1000,
+    };
+    return config;
+  },
 }
