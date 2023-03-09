@@ -1,13 +1,15 @@
-# Select reference image
 FROM node:16-alpine
 
-WORKDIR /usr/src/app
+RUN mkdir -p /app
+
+WORKDIR /app
+
+COPY package*.json /app
+
+RUN npm install
 
 COPY . .
 
-RUN npm i
+EXPOSE 6006
 
-EXPOSE 3030
-
-# run storybook app
 CMD ["npm", "run", "storybook"]
