@@ -8,6 +8,7 @@ services:
     container_name: design-system
     restart: always
     volumes:
+      - ./design-system/components/:/app/components
       - ./design-system/stories/:/app/stories
       - ./design-system/.storybook/:/app/.storybook
     ports:

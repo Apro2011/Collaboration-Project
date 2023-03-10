@@ -8,8 +8,6 @@ COPY package*.json /app
 
 RUN npm install
 
-COPY . .
-
 EXPOSE 6006
 
 CMD ["npm", "run", "storybook"]
