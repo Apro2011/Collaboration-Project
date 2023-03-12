@@ -15,7 +15,7 @@ function NavList({loggedIn}) {
                 <a className={styles['navlist__link']} href='#'>Create Blog Post</a>
             </li>}
             <li className={styles['navlist__item']}>
-                {loggedIn ? <span className={styles['navlist__link']} onClick={handleLogout}>Log Out</span>
+                {loggedIn ? <button className={styles['navlist__link']} onClick={handleLogout}>Log Out</button>
                 :<a className={styles['navlist__link']} href='/sign-in'>Sign In</a>}
             </li>
         </ul>
