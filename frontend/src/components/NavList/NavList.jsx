@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '../../hooks/auth';
-
+import Link from 'next/link'
 import styles from './NavList.module.css';
 
 function NavList({loggedIn}) {
@@ -12,11 +12,16 @@ function NavList({loggedIn}) {
     return (
         <ul className={styles['navlist']}>
             {loggedIn === true && <li className={styles['navlist__item']}>
-                <a className={styles['navlist__link']} href='#'>Create Blog Post</a>
+                <Link href="/#" className={styles['navlist__link']}> 
+                    Create Blog Post
+                </Link>
             </li>}
             <li className={styles['navlist__item']}>
                 {loggedIn ? <button className={styles['navlist__link']} onClick={handleLogout}>Log Out</button>
-                :<a className={styles['navlist__link']} href='/sign-in'>Sign In</a>}
+                :<Link href="/sign-in" className={styles['navlist__link']}> 
+                    Sign In
+                </Link>
+              }
             </li>
         </ul>
     );
