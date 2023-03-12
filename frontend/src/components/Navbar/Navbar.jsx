@@ -17,7 +17,7 @@ function NavBar() {
                     loggedIn = {isLoggedIn}
                 />
             </div>
-            {isLoggedIn === true && <div className={styles['navbar__user']}><User/></div>}
+            {isLoggedIn && <div className={styles['navbar__user']}><User/></div>}
         </nav>
     );
 }
