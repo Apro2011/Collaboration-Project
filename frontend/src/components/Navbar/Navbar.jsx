@@ -1,10 +1,8 @@
 import React from 'react';
-
 import styles from './Navbar.module.css';
-
 import User from '../User/User';
 import NavList from '../NavList/NavList';
-import auth from '../../hooks/auth'
+import auth from '../../utils/auth'
 
 function NavBar() {
     

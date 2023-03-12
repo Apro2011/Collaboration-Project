@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../../hooks/auth';
+import auth from '../../utils/auth';
 import Link from 'next/link'
 import styles from './NavList.module.css';
 
