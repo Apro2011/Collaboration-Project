@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Field } from 'formik';
 import React from 'react';
-import styles from "./Input.module.css";
+import styles from './Input.module.css';
 
 const Input = ({placeholder,name,type}) => {
     return (

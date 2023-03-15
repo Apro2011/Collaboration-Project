@@ -3,8 +3,8 @@ import {
   InMemoryCache,
   ApolloLink,
   from,
-  HttpLink,
-} from "@apollo/client";
+  HttpLink
+} from '@apollo/client';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -15,15 +15,15 @@ const client = new ApolloClient({
 
         headers: {
           ...headers,
-          authorization: localStorage.getItem("token")
-            ? `JWT ${localStorage.getItem("token")}`
-            : "",
-        },
+          authorization: localStorage.getItem('token')
+            ? `JWT ${localStorage.getItem('token')}`
+            : ''
+        }
       }));
       return forward(operation);
     }),
-    new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT }),
-  ]),
+    new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT })
+  ])
 });
 
 export default client;
