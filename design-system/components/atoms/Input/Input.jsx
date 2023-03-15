@@ -12,10 +12,4 @@ const Input = ({placeholder,name,type}) => {
     );
 };
 
-// Input.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   type: PropTypes.string.isRequired,
-//   placeholder: PropTypes.string.isRequired
-// };
-
 export default Input;
