@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@storybook/react": "^6.5.16"
+  }
+}
