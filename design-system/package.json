@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Apro2011/Collaboration-Project#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@bbbtech/storybook-formik": "^2.5.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
@@ -33,6 +34,7 @@
     "storybook-css-modules": "^1.0.8"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
