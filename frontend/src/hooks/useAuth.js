@@ -26,7 +26,7 @@ function useToken() {
           setIsAuthenticated(true);
         } catch (error) {
           console.log(error);
-          router.push('/sign-in')
+          router.push("/sign-in");
           localStorage.clear();
           return;
         }
