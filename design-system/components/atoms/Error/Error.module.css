@@ -1,0 +1,8 @@
+.error_container{
+    height: 24px;
+}
+.error{
+    opacity: 1;
+    color: red;
+    margin-bottom: 12px;
+}
