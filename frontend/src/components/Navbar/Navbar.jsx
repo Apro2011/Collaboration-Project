@@ -1,23 +1,21 @@
 import React from 'react';
-
 import styles from './Navbar.module.css';
-
 import User from '../User/User';
 import NavList from '../NavList/NavList';
-import useAuth from "../../hooks/useAuth";
-
-const userLoggedIn = true;
+import auth from '../../utils/auth'
 
 function NavBar() {
-    const { isAuthenticated } = useAuth();
+    
+    const {isLoggedIn} = auth.isLoggedIn();
+
     return (
         <nav className={styles['navbar']}>
             <div className={styles['navbar__nav-list']}>
                 <NavList
-                    loggedIn = {isAuthenticated}
+                    loggedIn = {isLoggedIn}
                 />
             </div>
-            {userLoggedIn === true && <div className={styles['navbar__user']}><User/></div>}
+            {isLoggedIn && <div className={styles['navbar__user']}><User/></div>}
         </nav>
     );
 }
