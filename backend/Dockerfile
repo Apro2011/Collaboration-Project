@@ -17,6 +17,7 @@ COPY ./guitar_blog ./guitar_blog
 COPY ./migrate.sh .
 COPY ./manage.py .
 COPY ./requirements.txt .
+COPY ./graphene_file_upload ./graphene_file_upload
 
 # Install python packages
 RUN pip install --no-cache-dir -r requirements.txt

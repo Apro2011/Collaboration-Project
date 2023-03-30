@@ -1,0 +1,62 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d9d9d9;
+    height: 100vh;
+}
+
+.sign_in_box{
+    min-width: 631px;
+    height: fit-content;
+    background-color: white;
+    padding: 54px 90px 58px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    margin-bottom: 41px;
+}
+
+.sign_in_title{
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    margin-bottom: 20px;
+}
+
+.sign_in_subtitle{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 26px;
+}
+
+.remember_me_box{
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.remember_me_checkbox{
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+}
+
+.remember_me_label{
+    padding-left: 7px;
+    cursor: pointer;
+}
+
+.signup{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 27px;
+}
+
+.forget_password{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
