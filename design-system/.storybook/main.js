@@ -17,7 +17,7 @@ module.exports = {
     config.watchOptions = {
       aggregateTimeout: 200,
       poll: 1000,
-    }
-    return config
+    };
+    return config;
   },
-}
+};

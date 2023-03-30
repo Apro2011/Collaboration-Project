@@ -1,0 +1,16 @@
+.menuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  position: relative;
+  width: 152px;
+  height: 88px;
+  background: #161616;
+}
+
+.menuItem > img {
+  width: 20px;
+  height: 20px;
+}

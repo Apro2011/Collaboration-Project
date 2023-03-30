@@ -13,7 +13,7 @@ const Button = ({ title, type, isLoading }) => {
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default Button;
