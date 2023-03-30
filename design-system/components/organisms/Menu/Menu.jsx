@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MenuItem from '../../atoms/MenuItem/MenuItem';
 import Logo from '../../atoms/Logo/Logo';
-import './Menu.css';
+import styles from './Menu.module.css';
 import LogoImg from '../../assets/Logo.png';
 import Settings from '../../assets/SettingsIcon.svg';
 import LoginIcon from '../../assets/LoginIcon.svg';
@@ -11,7 +11,7 @@ const Menu = ({ data, curActive }) => {
     <MenuItem title={menuItem.title} iconPath={menuItem.iconPath} />
   ));
   return (
-    <div className={'menu'}>
+    <div className={styles.menu}>
       <Logo title={'Music Logo'} iconPath={LogoImg} />
       {menuItems}
       <div style={{ marginTop: '272px' }}>

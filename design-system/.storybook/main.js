@@ -10,11 +10,6 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-css-modules',
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    'storybook-css-modules',
     '@bbbtech/storybook-formik/register',
   ],
   framework: '@storybook/react',
