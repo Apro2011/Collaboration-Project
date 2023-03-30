@@ -10,6 +10,12 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-css-modules',
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    'storybook-css-modules',
+    '@bbbtech/storybook-formik/register',
   ],
   framework: '@storybook/react',
   webpackFinal: async (config) => {
@@ -20,23 +26,3 @@ module.exports = {
     return config;
   },
 };
-
-// module.exports = {
-//   addons: ['@storybook/preset-create-react-app'],
-//   webpackFinal: async (config, { configType }) => {
-//     config.module.rules.push({
-//       test: /\.module\.css$/,
-//       use: [
-//         'style-loader',
-//         {
-//           loader: 'css-loader',
-//           options: {
-//             modules: true,
-//           },
-//         },
-//       ],
-//     });
-
-//     return config;
-//   },
-// };

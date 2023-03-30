@@ -20,7 +20,7 @@ COPY ./requirements.txt .
 COPY ./graphene_file_upload ./graphene_file_upload
 
 # Install python packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --use-pep517
 
 # Expose the Port
 EXPOSE 8000
