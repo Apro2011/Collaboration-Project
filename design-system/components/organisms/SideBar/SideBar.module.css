@@ -1,0 +1,17 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  padding: 0px;
+  width: 275px;
+  height: 100vh;
+  background: #161616;
+}
+.header {
+  padding: 32px 10px;
+}
+.body {
+}
+.footer {
+  margin-top: auto;
+}
